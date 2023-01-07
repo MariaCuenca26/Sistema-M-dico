@@ -1,0 +1,143 @@
+from clases.antecedente import Antecedente
+from clases.cita import Cita
+from clases.empleado import Empleado
+from clases.empresa import Empresa
+from clases.grupo_antecedente import GrupoAntecedente
+from clases.historia import Historia
+from clases.medicamento import Medicamento
+from clases.paciente import Paciente
+from clases.receta import Receta
+from clases.rol import Rol
+from clases.usuario import Usuario
+
+print("\nListado de Consultorios\n")
+empresa = Empresa('Consultorio Medical Center', '0234893234001', alias='Medic Center ')
+print(empresa.mostrar())
+print("\nCreando Horario de atencion\n")
+empresa.agregar_horario('Lu', '08:00 AM', '12:00 PM')
+empresa.agregar_horario('Lu', '13:00 PM', '17:00 PM')
+empresa.agregar_horario('Ma', '09:00 AM', '13:00 PM')
+empresa.agregar_horario('Ma', '14:00 PM', '18:00 PM')
+empresa.agregar_horario('Mi', '08:00 AM', '12:00 PM')
+empresa.agregar_horario('Mi', '13:00 PM', '17:00 PM')
+empresa.agregar_horario('Ju', '08:00 AM', '12:00 PM')
+empresa.agregar_horario('Ju', '13:00 PM', '17:00 PM')
+empresa.agregar_horario('Vi', '08:00 AM', '12:00 PM')
+empresa.agregar_horario('Vi', '13:00 PM', '17:00 PM')
+empresa.agregar_horario('Sa', '08:00 AM', '12:00 PM')
+for horario in empresa.horarios:
+    print(horario.mostrar())
+    
+print("\nListado de Pacientes\n")
+paciente1 = Paciente('Amelia Estefania', 'Vera', 'Espinoza', '0940114579', '24-05-1997', 'F', 'Milagro')
+paciente2 = Paciente('Juan Carlos', 'Perez', 'Marin', '0940283191', '28-10-1996', 'M', 'Guayaquil')
+paciente3 = Paciente('Armando Mario', 'Cardenas', 'Pita', '0728832922', '22-09-1998', 'M', 'Duran')
+paciente4 = Paciente('Mariana Julexi', 'Loor', 'Mera', '1909239211', '21-05-1993', 'F', 'Yaguachi')
+paciente5 = Paciente('Milena Maria', 'Suarez', 'Zapata', '0837821123', '15-06-1992', 'F', 'San Carlos')
+
+print(paciente1.mostrar())
+print(paciente2.mostrar())
+print(paciente3.mostrar())
+print(paciente4.mostrar())
+print(paciente5.mostrar())
+empresa.agregar_paciente(paciente1)
+empresa.agregar_paciente(paciente2)
+empresa.agregar_paciente(paciente3)
+empresa.agregar_paciente(paciente4)
+empresa.agregar_paciente(paciente5)
+print("\nListado de Roles \n")
+rol1 = Rol('Enfermera')
+rol2 = Rol('Doctor')
+rol3 = Rol('Director')
+print(rol1.mostrar())
+print(rol2.mostrar())
+print(rol3.mostrar())
+
+print('\nListado de Empleados que laboran en el consultorio con sus usuarios de acceso\n')
+usuario1 = Usuario(nombre_usuario='pmenaa', clave='mena123')
+usuario2 = Usuario(nombre_usuario='kperezt', clave='kperez123')
+usuario3 = Usuario(nombre_usuario='ssanchezs', clave='ssanchez123')
+usuario4 = Usuario(nombre_usuario='gmurillop', clave='gmurillop123')
+jefe = Empleado('Gianella Camila', 'Murillo', 'Perez', '174011893290', '10-11-1988', 'F', 'Milagro',usuario4, rol3)
+empleado1 = Empleado('Patricia Asusena', 'Mena', 'Anzules', '174011482339', '10-11-1995', 'F', 'Milagro',usuario1, rol1, jefe=jefe)
+empleado2 = Empleado('Kevin Ariel', 'Perez', 'Torres', '1740114979', '01-02-1992', 'M', 'Duran', usuario2, rol2, jefe=jefe)
+empleado3 = Empleado('Samantha Estefania', 'Sanchez', 'Suarez', '1740834982', '01-02-1991', 'F', 'Duran', usuario2, rol2, jefe=jefe)
+print(jefe.mostrar(), jefe.usuario.nombre_usuario)
+print(empleado1.mostrar(), empleado1.usuario.nombre_usuario)
+print(empleado2.mostrar(), empleado2.usuario.nombre_usuario)
+print(empleado3.mostrar(), empleado3.usuario.nombre_usuario)
+empresa.agregar_empleado(jefe)
+empresa.agregar_empleado(empleado1)
+empresa.agregar_empleado(empleado2)
+empresa.agregar_empleado(empleado3)
+
+print("\nListado de Medicamentos\n")
+medicamento1 = Medicamento('Paracetamol')
+medicamento2 = Medicamento('Aspirina')
+medicamento3 = Medicamento('Simvastatina ')
+medicamento4 = Medicamento('Lexotiroxina sódica')
+medicamento5 = Medicamento('Ramipril')
+medicamento6 = Medicamento('Amlodipina')
+medicamento7 = Medicamento('Omeprazol')
+print(medicamento1.mostrar())
+print(medicamento2.mostrar())
+print(medicamento3.mostrar())
+print(medicamento4.mostrar())
+print(medicamento5.mostrar())
+print(medicamento6.mostrar())
+print(medicamento7.mostrar())
+print("\nListado de Grupo Antecedentes Medicos\n")
+grupo1  = GrupoAntecedente('Antecedentes Médicos')
+grupo2  = GrupoAntecedente('Antecedentes Familiares')
+print(grupo1.mostrar())
+print(grupo2.mostrar())
+print("\nListado de Antecedentes Medicos\n")
+antecedente1 = Antecedente('Anemia',grupo1)
+antecedente2 = Antecedente('Alergias',grupo1)
+antecedente3 = Antecedente('Diabetes',grupo2)
+antecedente4 = Antecedente('Hipertencion',grupo2)
+antecedente5 = Antecedente('Cancer',grupo2)
+antecedente6 = Antecedente('VIH',grupo2)
+antecedente7 = Antecedente('Hepatitis',grupo2)
+print(antecedente1.mostrar())
+print(antecedente2.mostrar())
+print(antecedente3.mostrar())
+print(antecedente4.mostrar())
+print(antecedente5.mostrar())
+print(antecedente6.mostrar())
+print(antecedente7.mostrar())
+
+print('\nListado de Citas medicas\n')
+cita0 = Cita( paciente1, empleado2, '22-12-2022', '08:00 AM', '08:59 AM', 3)
+cita0.usuario_creacion = empleado2.usuario #Usuario que  agenda la cita medica que es el doctor mismo que atendio
+cita1 = Cita( paciente3, empleado2, '05-01-2023', '08:00 AM', '08:59 AM')
+cita1.usuario_creacion = empleado1.usuario #Usuario que agenda la cita medica que es la enfermera
+cita2 = Cita( paciente2, empleado3, '05-01-2023', '09:00 AM', '09:59 AM')
+cita2.usuario_creacion = empleado1.usuario #Usuario que agenda la cita medica que es la enfermera
+print(cita0.mostrar(), cita0.usuario_creacion.nombre_usuario)
+print(cita1.mostrar(), cita1.usuario_creacion.nombre_usuario)
+print(cita2.mostrar(), cita2.usuario_creacion.nombre_usuario)
+
+print('\nCreacion de Receta\n')
+receta1 = Receta(paciente1, 'Dolor de estomago', '03-01-2023', 'empezo teniendo malestrar', 'tiene anemia', 'debe comer saludable')
+receta1.usuario_creacion = empleado2.usuario
+print(receta1.mostrar())
+print('\nDetalle de Receta\n')
+receta1.agregar_detallereceta(medicamento1, 5, '1 capsula', 'durante un mes', 'cada 8 horas')
+receta1.agregar_detallereceta(medicamento2, 1, '2 capsula', 'durante un mes', 'cada 24 horas')
+receta1.agregar_detallereceta(medicamento4, 1, '1 capsula', 'durante un mes', 'cada 12 horas')
+receta1.agregar_detallereceta(medicamento5, 1, '1 capsula', 'durante un mes', 'cada 6 horas')
+for detalle in receta1.medicamentos:
+    print(detalle.mostrar())
+    
+print('\nCreacion de Historial medico\n')
+historia1 = Historia(paciente1, '03-01-2023 08:10 AM','El paciente ingresa con fiebre y dolor de estomago')
+historia1.usuario_creacion = empleado2.usuario
+print(historia1.mostrar())
+print('\nDetalle de Historia\n')
+historia1.agregar_detallehistoria(antecedente3, 'El tio del paciente tiene diabetes tipo 2 y lleva un tratamiento')
+historia1.agregar_detallehistoria(antecedente2, 'El paciente presenta alergias a el camaron y la pelusa de los gatos')
+historia1.agregar_detallehistoria(antecedente4, 'La abuela paterna del paciente presenta un cuadro de hipertención')
+historia1.agregar_detallehistoria(antecedente7, 'La prima en segundo grado paterno del paciente sufre de hepatitis grado 3')
+for detalle in historia1.antecedentes:
+    print(detalle.mostrar())
